@@ -70,6 +70,12 @@ it('works', function () {
 
 Note that it is important to pass `this` to the matcher because it contains the test metadata.
 
+Now you can run `mocha` as usual:
+
+```bash
+$ mocha
+```
+
 To update existing snapshots, pass the environment variable `SNAPSHOT_UPDATE` into the process:
 
 ```bash
