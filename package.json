@@ -8,6 +8,7 @@
     "mocha",
     "snapshot"
   ],
+  "repository": "dword-design/expect-mocha-image-snapshot",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@dword-design.de>",
   "main": "dist/index.js",
