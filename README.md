@@ -64,13 +64,25 @@ expect.extend({ toMatchImageSnapshot })
 it('works', function () {
   ...
   const screenshot = await puppeteer.screenshot()
-  expect(screenshot).toMatchSnapshot(this) // this is important here
+  expect(screenshot).toMatchImageSnapshot(this) // this is important here
 });
 ```
 
 Note that it is important to pass `this` to the matcher because it contains the test metadata.
 
-It is also possible to configure default options:
+To update existing snapshots, pass the environment variable `SNAPSHOT_UPDATE` into the process:
+
+```bash
+$ SNAPSHOT_UPDATE=true mocha
+```
+
+Additional options can be passed as a second argument (see [jest-image-snapshot docs](https://www.npmjs.com/package/jest-image-snapshot)):
+
+```js
+expect(screenshot).toMatchImageSnapshot(this, { dumpDiffToConsole: true })
+```
+
+It is also possible to configure default options (see [jest-image-snapshot docs](https://www.npmjs.com/package/jest-image-snapshot)):
 
 ```js
 import { configureToMatchImageSnapshot } from 'expect-mocha-image-snapshot'
@@ -81,7 +93,6 @@ expect.extend({
   }),
 })
 ```
-See the [jest-image-snapshot docs](https://www.npmjs.com/package/jest-image-snapshot) for details.
 
 <!-- LICENSE/ -->
 ## License
