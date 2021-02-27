@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.0...v1.0.1) (2021-02-27)
+
+
+### Bug Fixes
+
+* update readme ([b915ecc](https://github.com/dword-design/expect-mocha-image-snapshot/commit/b915eccc68fe242791a77b9d2aab6a0bc3c6b2e9))
+
 # 1.0.0 (2021-02-27)
 
 
