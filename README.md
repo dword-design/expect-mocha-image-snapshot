@@ -61,7 +61,7 @@ import { toMatchImageSnapshot } from 'expect-mocha-image-snapshot'
 
 expect.extend({ toMatchImageSnapshot })
 
-it('works', function () {
+it('works', async function () {
   ...
   const screenshot = await puppeteer.screenshot()
   expect(screenshot).toMatchImageSnapshot(this) // this is important here
