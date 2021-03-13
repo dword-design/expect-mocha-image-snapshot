@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.3...v1.0.4) (2021-03-13)
+
+
+### Bug Fixes
+
+* support multiple snapshots per test ([#3](https://github.com/dword-design/expect-mocha-image-snapshot/issues/3)) ([7ab91a8](https://github.com/dword-design/expect-mocha-image-snapshot/commit/7ab91a8f68ec21a881e8c2101545a84426630f1d))
+
 ## [1.0.3](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.2...v1.0.3) (2021-03-05)
 
 
