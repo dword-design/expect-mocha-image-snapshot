@@ -25,12 +25,14 @@ export const configureToMatchImageSnapshot = common => (
         'Did you forget to pass `this` into expect().toMatchImageSnapshot(this)?'
     )
   }
-  const snapshotState = new jestSnapshot.SnapshotState(undefined, {
-    updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
-  })
+  if (!context.snapshotState) {
+    context.snapshotState = new jestSnapshot.SnapshotState(undefined, {
+      updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
+    })
+  }
   const matcher = jestToMatchImageSnapshot.bind({
     currentTestName: makeTestTitle(context.test),
-    snapshotState,
+    snapshotState: context.snapshotState,
     testPath: context.test.file,
   })
   const result = matcher(received, { ...common, ...options })
