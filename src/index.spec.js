@@ -36,7 +36,7 @@ export default {
         })
       `
       )
-      await execa.command('mocha index.spec.js')
+      await execa.command('mocha --timeout 5000 index.spec.js')
       const snapshot = await readFile(
         P.join('__foo_image_snapshots__', 'index-spec-js-works-1-snap.png')
       )
@@ -93,7 +93,7 @@ export default {
           .toBuffer()
       )
       await expect(
-        execa.command('mocha index.spec.js', { all: true })
+        execa.command('mocha --timeout 5000 index.spec.js', { all: true })
       ).rejects.toThrow(
         'Expected image to match or be a close match to snapshot but was 100% different from snapshot (2304 differing pixels).'
       )
@@ -137,7 +137,7 @@ export default {
           .png()
           .toBuffer()
       )
-      await execa.command('mocha index.spec.js')
+      await execa.command('mocha --timeout 5000 index.spec.js')
     }),
   'multiple snapshots per test': () =>
     withLocalTmpDir(async () => {
@@ -176,7 +176,7 @@ export default {
         })
       `
       )
-      await execa.command('mocha index.spec.js')
+      await execa.command('mocha --timeout 5000 index.spec.js')
       expect(
         await readFile(
           P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
@@ -236,7 +236,7 @@ export default {
         })
       `
       )
-      await execa.command('mocha index.spec.js')
+      await execa.command('mocha --timeout 5000 index.spec.js')
       expect(
         await readFile(
           P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
@@ -293,7 +293,7 @@ export default {
           .png()
           .toBuffer()
       )
-      await execa.command('mocha index.spec.js', {
+      await execa.command('mocha --timeout 5000 index.spec.js', {
         env: { SNAPSHOT_UPDATE: true },
       })
       const snapshot = await readFile(
