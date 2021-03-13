@@ -139,6 +139,77 @@ export default {
       )
       await execa.command('mocha index.spec.js')
     }),
+  'multiple snapshots per test': () =>
+    withLocalTmpDir(async () => {
+      await outputFile(
+        'index.spec.js',
+        endent`
+        const sharp = require('${packageName`sharp`}')
+        const expect = require('expect')
+        const { toMatchImageSnapshot: self } = require('../src')
+
+        expect.extend({ toMatchImageSnapshot: self })
+
+        it('works', async function () {
+          const img1 = await sharp({
+            create: {
+              background: { b: 0, g: 255, r: 0 },
+              channels: 3,
+              height: 48,
+              width: 48,
+            },
+          })
+            .png()
+            .toBuffer()
+          const img2 = await sharp({
+            create: {
+              background: { b: 255, g: 0, r: 0 },
+              channels: 3,
+              height: 48,
+              width: 48,
+            },
+          })
+            .png()
+            .toBuffer()
+          expect(img1).toMatchImageSnapshot(this)
+          expect(img2).toMatchImageSnapshot(this)
+        })
+      `
+      )
+      await execa.command('mocha index.spec.js')
+      expect(
+        await readFile(
+          P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
+        )
+      ).toMatchImage(
+        await sharp({
+          create: {
+            background: { b: 0, g: 255, r: 0 },
+            channels: 3,
+            height: 48,
+            width: 48,
+          },
+        })
+          .png()
+          .toBuffer()
+      )
+      expect(
+        await readFile(
+          P.join('__image_snapshots__', 'index-spec-js-works-2-snap.png')
+        )
+      ).toMatchImage(
+        await sharp({
+          create: {
+            background: { b: 255, g: 0, r: 0 },
+            channels: 3,
+            height: 48,
+            width: 48,
+          },
+        })
+          .png()
+          .toBuffer()
+      )
+    }),
   'no existing snapshots': () =>
     withLocalTmpDir(async () => {
       await outputFile(
@@ -166,10 +237,11 @@ export default {
       `
       )
       await execa.command('mocha index.spec.js')
-      const snapshot = await readFile(
-        P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
-      )
-      expect(snapshot).toMatchImage(
+      expect(
+        await readFile(
+          P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
+        )
+      ).toMatchImage(
         await sharp({
           create: {
             background: { b: 0, g: 255, r: 0 },
