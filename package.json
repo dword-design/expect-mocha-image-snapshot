@@ -9,6 +9,7 @@
     "snapshot"
   ],
   "repository": "dword-design/expect-mocha-image-snapshot",
+  "funding": "https://www.buymeacoffee.com/dword",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@dword-design.de>",
   "main": "dist/index.js",
