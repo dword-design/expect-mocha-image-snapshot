@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.7...v1.0.8) (2021-03-31)
+
+
+### Bug Fixes
+
+* update dependency sharp to ^0.28.0 ([#8](https://github.com/dword-design/expect-mocha-image-snapshot/issues/8)) ([090346a](https://github.com/dword-design/expect-mocha-image-snapshot/commit/090346ae91efcb5f228a1363be0a2db9c0a84137))
+
 ## [1.0.7](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.6...v1.0.7) (2021-03-23)
 
 
