@@ -115,7 +115,7 @@ expect.extend({
 <!-- LICENSE/ -->
 ## Contribute
 
-Are you missing something or want to contribute? Feel free to file an [issue](https://github.com/dword-design/expect-mocha-image-snapshot/issues) or [pull request](https://github.com/dword-design/expect-mocha-image-snapshot/pulls)! ⚙️
+Are you missing something or want to contribute? Feel free to file an [issue](https://github.com/dword-design/expect-mocha-image-snapshot/issues) or a [pull request](https://github.com/dword-design/expect-mocha-image-snapshot/pulls)! ⚙️
 
 ## Support
 
