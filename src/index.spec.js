@@ -37,6 +37,7 @@ export default {
       `
       )
       await execa.command('mocha --timeout 5000 index.spec.js')
+
       const snapshot = await readFile(
         P.join('__foo_image_snapshots__', 'index-spec-js-works-1-snap.png')
       )
@@ -296,6 +297,7 @@ export default {
       await execa.command('mocha --timeout 5000 index.spec.js', {
         env: { SNAPSHOT_UPDATE: true },
       })
+
       const snapshot = await readFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
       )

@@ -3,6 +3,7 @@ import jestSnapshot from 'jest-snapshot'
 
 const makeTestTitle = test => {
   let next = test
+
   const title = []
   for (;;) {
     if (!next.parent) {
@@ -11,6 +12,7 @@ const makeTestTitle = test => {
     title.push(next.title)
     next = next.parent
   }
+
   return title.reverse().join(' ')
 }
 
@@ -30,12 +32,15 @@ export const configureToMatchImageSnapshot = common => (
       updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
     })
   }
+
   const matcher = jestToMatchImageSnapshot.bind({
     currentTestName: makeTestTitle(context.test),
     snapshotState: context.snapshotState,
     testPath: context.test.file,
   })
+
   const result = matcher(received, { ...common, ...options })
+
   return result
 }
 
