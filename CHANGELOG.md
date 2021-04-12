@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.8...v1.0.9) (2021-04-12)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#10](https://github.com/dword-design/expect-mocha-image-snapshot/issues/10)) ([6fc6514](https://github.com/dword-design/expect-mocha-image-snapshot/commit/6fc6514984c22b24b3ae9c1512ee692f2e24c8e9))
+
 ## [1.0.8](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.7...v1.0.8) (2021-03-31)
 
 
