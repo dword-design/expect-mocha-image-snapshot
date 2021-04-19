@@ -5314,10 +5314,10 @@ jest-haste-map@^26.6.2:
   optionalDependencies:
     fsevents "^2.1.2"
 
-jest-image-matcher@^1.3.0:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/jest-image-matcher/-/jest-image-matcher-1.3.6.tgz#285378dbed7579bae5242fddabfb2eed5cf152e4"
-  integrity sha512-2boAeNwEwJ1RQNU5dsXK7CE3CRvro6ZOWb2XNO33iMNkW/mD5MMwZzdM0sT6ypmfskf9bPexTllJl1mMOHZZJw==
+jest-image-matcher@^1.3.6:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/jest-image-matcher/-/jest-image-matcher-1.3.7.tgz#ede0ef93f18d32ca1bf5d30d48e046341a46fe90"
+  integrity sha512-5j2/uOqsIkLSq8p98XkKZAkbQhmppGklITe7UVUFTVaHReVUBpbLjTONKQMC7r4jntCMIgoCe0IgMQiiWz3sSQ==
   dependencies:
     "@dword-design/functions" "^3.0.0"
     fs-extra "^9.1.0"
