@@ -3,10 +3,17 @@
   "version": "1.0.9",
   "description": "A wrapper around jest-image-snapshot that makes it compatible to Mocha.",
   "keywords": [
+    "expect",
+    "frontend",
+    "javascript",
     "jest",
-    "image",
+    "jest-image-snapshot",
     "mocha",
-    "snapshot"
+    "puppeteer",
+    "snapshot-testing",
+    "test-driven-development",
+    "testing",
+    "webdevelopment"
   ],
   "repository": "dword-design/expect-mocha-image-snapshot",
   "funding": "https://www.buymeacoffee.com/dword",
