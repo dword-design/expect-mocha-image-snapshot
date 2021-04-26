@@ -140,6 +140,40 @@ export default {
       )
       await execa.command('mocha --timeout 5000 index.spec.js')
     }),
+  'expect-mocha-snapshot': () =>
+    withLocalTmpDir(async () => {
+      await outputFile(
+        'index.spec.js',
+        endent`
+        const sharp = require('${packageName`sharp`}')
+        const expect = require('expect')
+        const { toMatchImageSnapshot: self } = require('../src')
+        const toMatchSnapshot = require('${packageName`expect-mocha-snapshot`}')
+
+        expect.extend({ toMatchImageSnapshot: self })
+        expect.extend({ toMatchSnapshot })
+
+        it('image snapshot', async function () {
+          const img = await sharp({
+            create: {
+              background: { b: 0, g: 255, r: 0 },
+              channels: 3,
+              height: 48,
+              width: 48,
+            },
+          })
+            .png()
+            .toBuffer()
+          expect(img).toMatchImageSnapshot(this)
+        })
+
+        it('text snapshot', function () {
+          expect('foo').toMatchSnapshot(this)
+        })
+      `
+      )
+      await execa.command('mocha --timeout 5000 index.spec.js')
+    }),
   'multiple snapshots per test': () =>
     withLocalTmpDir(async () => {
       await outputFile(
