@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.10...v1.0.11) (2021-04-26)
+
+
+### Bug Fixes
+
+* update dependency with-local-tmp-dir to v3 ([#17](https://github.com/dword-design/expect-mocha-image-snapshot/issues/17)) ([7512e0d](https://github.com/dword-design/expect-mocha-image-snapshot/commit/7512e0dbfd59e0e3028577ba95091a55097ae66b))
+
 ## [1.0.10](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.9...v1.0.10) (2021-04-20)
 
 
