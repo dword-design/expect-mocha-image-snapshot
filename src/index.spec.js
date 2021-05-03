@@ -16,7 +16,7 @@ export default {
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
-        const expect = require('expect')
+        const expect = require('${packageName`expect`}')
         const { configureToMatchImageSnapshot: self } = require('../src')
 
         expect.extend({ toMatchImageSnapshot: self({ customSnapshotsDir: '__foo_image_snapshots__' }) })
@@ -60,7 +60,7 @@ export default {
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
-        const expect = require('expect')
+        const expect = require('${packageName`expect`}')
         const { toMatchImageSnapshot: self } = require('../src')
 
         expect.extend({ toMatchImageSnapshot: self })
@@ -105,7 +105,7 @@ export default {
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
-        const expect = require('expect')
+        const expect = require('${packageName`expect`}')
         const { toMatchImageSnapshot: self } = require('../src')
 
         expect.extend({ toMatchImageSnapshot: self })
@@ -146,7 +146,7 @@ export default {
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
-        const expect = require('expect')
+        const expect = require('${packageName`expect`}')
         const { toMatchImageSnapshot: self } = require('../src')
         const toMatchSnapshot = require('${packageName`expect-mocha-snapshot`}')
 
@@ -180,7 +180,7 @@ export default {
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
-        const expect = require('expect')
+        const expect = require('${packageName`expect`}')
         const { toMatchImageSnapshot: self } = require('../src')
 
         expect.extend({ toMatchImageSnapshot: self })
@@ -251,7 +251,7 @@ export default {
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
-        const expect = require('expect')
+        const expect = require('${packageName`expect`}')
         const { toMatchImageSnapshot: self } = require('../src')
 
         expect.extend({ toMatchImageSnapshot: self })
@@ -295,7 +295,7 @@ export default {
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
-        const expect = require('expect')
+        const expect = require('${packageName`expect`}')
         const { toMatchImageSnapshot: self } = require('../src')
 
         expect.extend({ toMatchImageSnapshot: self })
