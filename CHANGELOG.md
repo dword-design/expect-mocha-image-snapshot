@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.13...v2.0.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/base to v8 ([#21](https://github.com/dword-design/expect-mocha-image-snapshot/issues/21)) ([790e729](https://github.com/dword-design/expect-mocha-image-snapshot/commit/790e72914d9f9e0621a6e6c402edf1ff3be7a4f1))
+
+
+### BREAKING CHANGES
+
+* require Node.js >= 12
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com>
+Co-authored-by: Sebastian Landwehr <info@dword-design.de>
+Co-authored-by: GitHub Actions <actions@github.com>
+
 ## [1.0.13](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v1.0.12...v1.0.13) (2021-05-03)
 
 
