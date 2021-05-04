@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.1...v2.0.2) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency depcheck-package-name to v2 ([#23](https://github.com/dword-design/expect-mocha-image-snapshot/issues/23)) ([fd9ba55](https://github.com/dword-design/expect-mocha-image-snapshot/commit/fd9ba55d89518806417a256d4abbf4320b8135b0))
+* update dependency jest-image-matcher to v2 ([#25](https://github.com/dword-design/expect-mocha-image-snapshot/issues/25)) ([2c83b7c](https://github.com/dword-design/expect-mocha-image-snapshot/commit/2c83b7cfdee1960e8658f839c3b59a97b9a52d35))
+* update dependency with-local-tmp-dir to v4 ([#26](https://github.com/dword-design/expect-mocha-image-snapshot/issues/26)) ([5845ce0](https://github.com/dword-design/expect-mocha-image-snapshot/commit/5845ce0a2007c83892a51a072054c917b0653580))
+
 ## [2.0.1](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.0...v2.0.1) (2021-05-04)
 
 
