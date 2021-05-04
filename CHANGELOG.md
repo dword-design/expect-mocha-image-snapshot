@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.2...v2.0.3) (2021-05-04)
+
+
+### Bug Fixes
+
+* update dependency fs-extra to v10 ([#24](https://github.com/dword-design/expect-mocha-image-snapshot/issues/24)) ([9097554](https://github.com/dword-design/expect-mocha-image-snapshot/commit/90975546c1f9b51fffdca91a1d8ec95cbee7510a))
+
 ## [2.0.2](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.1...v2.0.2) (2021-05-04)
 
 
