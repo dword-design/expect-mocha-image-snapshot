@@ -16,32 +16,29 @@ const makeTestTitle = test => {
   return title.reverse().join(' ')
 }
 
-export const configureToMatchImageSnapshot = common => (
-  received,
-  context,
-  options
-) => {
-  if (!context || !context.test) {
-    throw new Error(
-      'Missing `context` argument for .toMatchImageSnapshot().\n' +
-        'Did you forget to pass `this` into expect().toMatchImageSnapshot(this)?'
-    )
-  }
-  if (!context.imageSnapshotState) {
-    context.imageSnapshotState = new jestSnapshot.SnapshotState(undefined, {
-      updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
+export const configureToMatchImageSnapshot =
+  common => (received, context, options) => {
+    if (!context || !context.test) {
+      throw new Error(
+        'Missing `context` argument for .toMatchImageSnapshot().\n' +
+          'Did you forget to pass `this` into expect().toMatchImageSnapshot(this)?'
+      )
+    }
+    if (!context.imageSnapshotState) {
+      context.imageSnapshotState = new jestSnapshot.SnapshotState(undefined, {
+        updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
+      })
+    }
+
+    const matcher = jestToMatchImageSnapshot.bind({
+      currentTestName: makeTestTitle(context.test),
+      snapshotState: context.imageSnapshotState,
+      testPath: context.test.file,
     })
+
+    const result = matcher(received, { ...common, ...options })
+
+    return result
   }
-
-  const matcher = jestToMatchImageSnapshot.bind({
-    currentTestName: makeTestTitle(context.test),
-    snapshotState: context.imageSnapshotState,
-    testPath: context.test.file,
-  })
-
-  const result = matcher(received, { ...common, ...options })
-
-  return result
-}
 
 export const toMatchImageSnapshot = configureToMatchImageSnapshot()
