@@ -41,7 +41,7 @@
     "@dword-design/functions": "^4.0.0",
     "depcheck-package-name": "^2.0.0",
     "execa": "^5.0.0",
-    "expect": "^26.6.2",
+    "expect": "^27.0.0",
     "expect-mocha-snapshot": "dword-design/expect-mocha-snapshot#fork",
     "fs-extra": "^10.0.0",
     "jest-image-matcher": "^2.0.0",
