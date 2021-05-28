@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.5...v2.0.6) (2021-05-28)
+
+
+### Bug Fixes
+
+* update dependency jest-snapshot to v27 ([a07832d](https://github.com/dword-design/expect-mocha-image-snapshot/commit/a07832d18d7baaf51608be0df910036f226aad39))
+
 ## [2.0.5](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.4...v2.0.5) (2021-05-28)
 
 
