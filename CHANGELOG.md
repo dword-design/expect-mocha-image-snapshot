@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.4...v2.0.5) (2021-05-28)
+
+
+### Bug Fixes
+
+* update dependency expect to v27 ([82f9f28](https://github.com/dword-design/expect-mocha-image-snapshot/commit/82f9f28ea43fe1f2e9d39cac534877b6257abb6d))
+
 ## [2.0.4](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.3...v2.0.4) (2021-05-28)
 
 
