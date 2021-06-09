@@ -45,7 +45,7 @@
     "expect-mocha-snapshot": "dword-design/expect-mocha-snapshot#fork",
     "fs-extra": "^10.0.0",
     "jest-image-matcher": "^2.0.0",
-    "mocha": "^8.3.0",
+    "mocha": "^9.0.0",
     "sharp": "^0.28.0",
     "with-local-tmp-dir": "^4.0.0"
   },
