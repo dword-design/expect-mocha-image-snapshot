@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.7...v2.0.8) (2021-06-14)
+
+
+### Bug Fixes
+
+* update config files ([ab3695b](https://github.com/dword-design/expect-mocha-image-snapshot/commit/ab3695baaa8694da5c98b49e1729c8f1b1e40a5c))
+
 ## [2.0.7](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.6...v2.0.7) (2021-06-09)
 
 
