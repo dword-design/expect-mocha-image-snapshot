@@ -3,7 +3,7 @@
 <!-- /TITLE -->
 
 <!-- BADGES/ -->
-  <p>
+<p>
     <a href="https://npmjs.org/package/expect-mocha-image-snapshot">
       <img
         src="https://img.shields.io/npm/v/expect-mocha-image-snapshot.svg"
