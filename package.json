@@ -33,7 +33,7 @@
     "test": "base test"
   },
   "dependencies": {
-    "jest-image-snapshot": "^4.4.0",
+    "jest-image-snapshot": "^5.0.0",
     "jest-snapshot": "^27.0.0"
   },
   "devDependencies": {
