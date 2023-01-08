@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v3.0.0...v3.0.1) (2023-01-08)
+
+
+### Bug Fixes
+
+* trigger release ([70ed688](https://github.com/dword-design/expect-mocha-image-snapshot/commit/70ed688b8f607607fdb84f2b2ce119acee733e4b))
+
 # [3.0.0](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.14...v3.0.0) (2023-01-08)
 
 
