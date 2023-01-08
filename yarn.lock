@@ -6982,10 +6982,10 @@ jest-haste-map@^27.5.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-jest-image-matcher@^2.0.0:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/jest-image-matcher/-/jest-image-matcher-2.0.11.tgz#e3c3e1a67b72529934f96f1a514b760b39c5e28a"
-  integrity sha512-Evvuaj8BWPds0T03MmqL6bZJTdfJVyHicN6MqeIkqZVhmwc2EQfPfaMXyF+654m/C1tBGESWCCgZi3BS26I1Kg==
+jest-image-matcher@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/jest-image-matcher/-/jest-image-matcher-3.0.0.tgz#17c7f279da1169b4238fd5e96d4c8476466d7853"
+  integrity sha512-/8ehCU34q6nLkn6aKHgZ5Q3mmEOrIKvdDic5a9wwBy3PqMcEgHRCBGdd+saIRVpfEgN0j9D4xcxxfMVu4muUUQ==
   dependencies:
     "@dword-design/functions" "^4.0.0"
     fs-extra "^10.0.0"
