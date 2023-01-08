@@ -1,7 +1,7 @@
 import { endent } from '@dword-design/functions'
 import packageName from 'depcheck-package-name'
-import execa from 'execa'
-import { outputFile, readFile } from 'fs-extra'
+import { execaCommand } from 'execa'
+import fs from 'fs-extra'
 import { toMatchImage } from 'jest-image-matcher'
 import P from 'path'
 import sharp from 'sharp'
@@ -12,7 +12,7 @@ expect.extend({ toMatchImage })
 export default {
   configure: () =>
     withLocalTmpDir(async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
@@ -36,9 +36,9 @@ export default {
         })
       `
       )
-      await execa.command('mocha --timeout 5000 index.spec.js')
+      await execaCommand('mocha --timeout 5000 index.spec.js')
 
-      const snapshot = await readFile(
+      const snapshot = await fs.readFile(
         P.join('__foo_image_snapshots__', 'index-spec-js-works-1-snap.png')
       )
       expect(snapshot).toMatchImage(
@@ -56,7 +56,7 @@ export default {
     }),
   'different existing snapshot': () =>
     withLocalTmpDir(async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
@@ -80,7 +80,7 @@ export default {
         })
       `
       )
-      await outputFile(
+      await fs.outputFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
         await sharp({
           create: {
@@ -94,14 +94,14 @@ export default {
           .toBuffer()
       )
       await expect(
-        execa.command('mocha --timeout 5000 index.spec.js', { all: true })
+        execaCommand('mocha --timeout 5000 index.spec.js', { all: true })
       ).rejects.toThrow(
         'Expected image to match or be a close match to snapshot but was 100% different from snapshot (2304 differing pixels).'
       )
     }),
   'equal existing snapshot': () =>
     withLocalTmpDir(async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
@@ -125,7 +125,7 @@ export default {
         })
       `
       )
-      await outputFile(
+      await fs.outputFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
         await sharp({
           create: {
@@ -138,11 +138,11 @@ export default {
           .png()
           .toBuffer()
       )
-      await execa.command('mocha --timeout 5000 index.spec.js')
+      await execaCommand('mocha --timeout 5000 index.spec.js')
     }),
   'expect-mocha-snapshot': () =>
     withLocalTmpDir(async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
@@ -172,11 +172,11 @@ export default {
         })
       `
       )
-      await execa.command('mocha --timeout 5000 index.spec.js')
+      await execaCommand('mocha --timeout 5000 index.spec.js')
     }),
   'multiple snapshots per test': () =>
     withLocalTmpDir(async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
@@ -211,9 +211,9 @@ export default {
         })
       `
       )
-      await execa.command('mocha --timeout 5000 index.spec.js')
+      await execaCommand('mocha --timeout 5000 index.spec.js')
       expect(
-        await readFile(
+        await fs.readFile(
           P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
         )
       ).toMatchImage(
@@ -229,7 +229,7 @@ export default {
           .toBuffer()
       )
       expect(
-        await readFile(
+        await fs.readFile(
           P.join('__image_snapshots__', 'index-spec-js-works-2-snap.png')
         )
       ).toMatchImage(
@@ -247,7 +247,7 @@ export default {
     }),
   'no existing snapshots': () =>
     withLocalTmpDir(async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
@@ -271,9 +271,9 @@ export default {
         })
       `
       )
-      await execa.command('mocha --timeout 5000 index.spec.js')
+      await execaCommand('mocha --timeout 5000 index.spec.js')
       expect(
-        await readFile(
+        await fs.readFile(
           P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
         )
       ).toMatchImage(
@@ -291,7 +291,7 @@ export default {
     }),
   'update existing snapshot': () =>
     withLocalTmpDir(async () => {
-      await outputFile(
+      await fs.outputFile(
         'index.spec.js',
         endent`
         const sharp = require('${packageName`sharp`}')
@@ -315,7 +315,7 @@ export default {
         })
       `
       )
-      await outputFile(
+      await fs.outputFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
         await sharp({
           create: {
@@ -328,11 +328,11 @@ export default {
           .png()
           .toBuffer()
       )
-      await execa.command('mocha --timeout 5000 index.spec.js', {
+      await execaCommand('mocha --timeout 5000 index.spec.js', {
         env: { SNAPSHOT_UPDATE: true },
       })
 
-      const snapshot = await readFile(
+      const snapshot = await fs.readFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
       )
       expect(snapshot).toMatchImage(

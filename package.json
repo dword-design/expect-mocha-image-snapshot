@@ -19,6 +19,8 @@
   "funding": "https://github.com/sponsors/dword-design",
   "license": "MIT",
   "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
+  "type": "module",
+  "exports": "./dist/index.js",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -26,6 +28,7 @@
   "scripts": {
     "checkUnknownFiles": "base checkUnknownFiles",
     "commit": "base commit",
+    "depcheck": "base depcheck",
     "dev": "base dev",
     "lint": "base lint",
     "prepare": "base prepare",
@@ -37,20 +40,20 @@
     "jest-snapshot": "^27.0.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^8.0.0",
+    "@dword-design/base": "^9.2.1",
     "@dword-design/functions": "^4.0.0",
     "depcheck-package-name": "^2.0.0",
-    "execa": "^5.0.0",
-    "expect": "^27.0.0",
-    "expect-mocha-snapshot": "dword-design/expect-mocha-snapshot#fork",
+    "execa": "^6.1.0",
+    "expect": "^29.3.1",
+    "expect-mocha-snapshot": "^2.1.5",
     "fs-extra": "^10.0.0",
     "jest-image-matcher": "^2.0.0",
     "mocha": "^9.0.0",
-    "sharp": "^0.29.0",
+    "sharp": "^0.31.3",
     "with-local-tmp-dir": "^4.0.0"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "publishConfig": {
     "access": "public"
