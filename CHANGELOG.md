@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.14...v3.0.0) (2023-01-08)
+
+
+### Bug Fixes
+
+* lock file maintenance ([#87](https://github.com/dword-design/expect-mocha-image-snapshot/issues/87)) ([99732d3](https://github.com/dword-design/expect-mocha-image-snapshot/commit/99732d3197adbdddcc67bc2678982624d0900742))
+
+
+### BREAKING CHANGES
+
+* drop node 12 support, move to esm
+
 ## [2.0.14](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v2.0.13...v2.0.14) (2022-01-12)
 
 
