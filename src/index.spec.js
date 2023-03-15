@@ -16,31 +16,31 @@ export default tester(
       await fs.outputFile(
         'index.spec.js',
         endent`
-      import sharp from '${packageName`sharp`}'
-      import { expect } from '${packageName`expect`}'
-      import { configureToMatchImageSnapshot as self } from '../src/index.js'
+          import sharp from '${packageName`sharp`}'
+          import { expect } from '${packageName`expect`}'
+          import { configureToMatchImageSnapshot as self } from '../src/index.js'
 
-      expect.extend({ toMatchImageSnapshot: self({ customSnapshotsDir: '__foo_image_snapshots__' }) })
+          expect.extend({ toMatchImageSnapshot: self({ customSnapshotsDir: '__foo_image_snapshots__' }) })
 
-      it('works', async function () {
-        const img = await sharp({
-          create: {
-            background: { b: 0, g: 255, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        expect(img).toMatchImageSnapshot(this)
-      })
-    `
+          it('works', async function () {
+            const img = await sharp({
+              create: {
+                background: { b: 0, g: 255, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            expect(img).toMatchImageSnapshot(this)
+          })
+        `,
       )
       await execaCommand('mocha --timeout 5000 index.spec.js')
 
       const snapshot = await fs.readFile(
-        P.join('__foo_image_snapshots__', 'index-spec-js-works-1-snap.png')
+        P.join('__foo_image_snapshots__', 'index-spec-js-works-1-snap.png'),
       )
       expect(snapshot).toMatchImage(
         await sharp({
@@ -52,33 +52,33 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
     },
     'different existing snapshot': async () => {
       await fs.outputFile(
         'index.spec.js',
         endent`
-      import sharp from '${packageName`sharp`}'
-      import { expect } from '${packageName`expect`}'
-      import { toMatchImageSnapshot as self } from '../src/index.js'
+          import sharp from '${packageName`sharp`}'
+          import { expect } from '${packageName`expect`}'
+          import { toMatchImageSnapshot as self } from '../src/index.js'
 
-      expect.extend({ toMatchImageSnapshot: self })
+          expect.extend({ toMatchImageSnapshot: self })
 
-      it('works', async function () {
-        const img = await sharp({
-          create: {
-            background: { b: 0, g: 255, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        expect(img).toMatchImageSnapshot(this)
-      })
-    `
+          it('works', async function () {
+            const img = await sharp({
+              create: {
+                background: { b: 0, g: 255, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            expect(img).toMatchImageSnapshot(this)
+          })
+        `,
       )
       await fs.outputFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
@@ -91,38 +91,38 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
       await expect(
-        execaCommand('mocha --timeout 5000 index.spec.js', { all: true })
+        execaCommand('mocha --timeout 5000 index.spec.js', { all: true }),
       ).rejects.toThrow(
-        'Expected image to match or be a close match to snapshot but was 100% different from snapshot (2304 differing pixels).'
+        'Expected image to match or be a close match to snapshot but was 100% different from snapshot (2304 differing pixels).',
       )
     },
     'equal existing snapshot': async () => {
       await fs.outputFile(
         'index.spec.js',
         endent`
-      import sharp from '${packageName`sharp`}'
-      import { expect } from '${packageName`expect`}'
-      import { toMatchImageSnapshot as self } from '../src/index.js'
+          import sharp from '${packageName`sharp`}'
+          import { expect } from '${packageName`expect`}'
+          import { toMatchImageSnapshot as self } from '../src/index.js'
 
-      expect.extend({ toMatchImageSnapshot: self })
+          expect.extend({ toMatchImageSnapshot: self })
 
-      it('works', async function () {
-        const img = await sharp({
-          create: {
-            background: { b: 0, g: 255, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        expect(img).toMatchImageSnapshot(this)
-      })
-    `
+          it('works', async function () {
+            const img = await sharp({
+              create: {
+                background: { b: 0, g: 255, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            expect(img).toMatchImageSnapshot(this)
+          })
+        `,
       )
       await fs.outputFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
@@ -135,7 +135,7 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
       await execaCommand('mocha --timeout 5000 index.spec.js')
     },
@@ -143,32 +143,32 @@ export default tester(
       await fs.outputFile(
         'index.spec.js',
         endent`
-      import sharp from '${packageName`sharp`}'
-      import { expect } from '${packageName`expect`}'
-      import { toMatchImageSnapshot as self } from '../src/index.js'
-      import toMatchSnapshot from '${packageName`expect-mocha-snapshot`}'
+          import sharp from '${packageName`sharp`}'
+          import { expect } from '${packageName`expect`}'
+          import { toMatchImageSnapshot as self } from '../src/index.js'
+          import toMatchSnapshot from '${packageName`expect-mocha-snapshot`}'
 
-      expect.extend({ toMatchImageSnapshot: self })
-      expect.extend({ toMatchSnapshot })
+          expect.extend({ toMatchImageSnapshot: self })
+          expect.extend({ toMatchSnapshot })
 
-      it('image snapshot', async function () {
-        const img = await sharp({
-          create: {
-            background: { b: 0, g: 255, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        expect(img).toMatchImageSnapshot(this)
-      })
+          it('image snapshot', async function () {
+            const img = await sharp({
+              create: {
+                background: { b: 0, g: 255, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            expect(img).toMatchImageSnapshot(this)
+          })
 
-      it('text snapshot', function () {
-        expect('foo').toMatchSnapshot(this)
-      })
-    `
+          it('text snapshot', function () {
+            expect('foo').toMatchSnapshot(this)
+          })
+        `,
       )
       await execaCommand('mocha --timeout 5000 index.spec.js')
     },
@@ -176,43 +176,43 @@ export default tester(
       await fs.outputFile(
         'index.spec.js',
         endent`
-      import sharp from '${packageName`sharp`}'
-      import { expect } from '${packageName`expect`}'
-      import { toMatchImageSnapshot as self } from '../src/index.js'
+          import sharp from '${packageName`sharp`}'
+          import { expect } from '${packageName`expect`}'
+          import { toMatchImageSnapshot as self } from '../src/index.js'
 
-      expect.extend({ toMatchImageSnapshot: self })
+          expect.extend({ toMatchImageSnapshot: self })
 
-      it('works', async function () {
-        const img1 = await sharp({
-          create: {
-            background: { b: 0, g: 255, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        const img2 = await sharp({
-          create: {
-            background: { b: 255, g: 0, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        expect(img1).toMatchImageSnapshot(this)
-        expect(img2).toMatchImageSnapshot(this)
-      })
-    `
+          it('works', async function () {
+            const img1 = await sharp({
+              create: {
+                background: { b: 0, g: 255, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            const img2 = await sharp({
+              create: {
+                background: { b: 255, g: 0, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            expect(img1).toMatchImageSnapshot(this)
+            expect(img2).toMatchImageSnapshot(this)
+          })
+        `,
       )
       await execaCommand('mocha --timeout 5000 index.spec.js')
       expect(
         await fs.readFile(
-          P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
-        )
+          P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
+        ),
       ).toMatchImage(
         await sharp({
           create: {
@@ -223,12 +223,12 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
       expect(
         await fs.readFile(
-          P.join('__image_snapshots__', 'index-spec-js-works-2-snap.png')
-        )
+          P.join('__image_snapshots__', 'index-spec-js-works-2-snap.png'),
+        ),
       ).toMatchImage(
         await sharp({
           create: {
@@ -239,39 +239,39 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
     },
     'no existing snapshots': async () => {
       await fs.outputFile(
         'index.spec.js',
         endent`
-      import sharp from '${packageName`sharp`}'
-      import { expect } from '${packageName`expect`}'
-      import { toMatchImageSnapshot as self } from '../src/index.js'
+          import sharp from '${packageName`sharp`}'
+          import { expect } from '${packageName`expect`}'
+          import { toMatchImageSnapshot as self } from '../src/index.js'
 
-      expect.extend({ toMatchImageSnapshot: self })
+          expect.extend({ toMatchImageSnapshot: self })
 
-      it('works', async function () {
-        const img = await sharp({
-          create: {
-            background: { b: 0, g: 255, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        expect(img).toMatchImageSnapshot(this)
-      })
-    `
+          it('works', async function () {
+            const img = await sharp({
+              create: {
+                background: { b: 0, g: 255, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            expect(img).toMatchImageSnapshot(this)
+          })
+        `,
       )
       await execaCommand('mocha --timeout 5000 index.spec.js')
       expect(
         await fs.readFile(
-          P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
-        )
+          P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
+        ),
       ).toMatchImage(
         await sharp({
           create: {
@@ -282,33 +282,33 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
     },
     'update existing snapshot': async () => {
       await fs.outputFile(
         'index.spec.js',
         endent`
-      import sharp from '${packageName`sharp`}'
-      import { expect } from '${packageName`expect`}'
-      import { toMatchImageSnapshot as self } from '../src/index.js'
+          import sharp from '${packageName`sharp`}'
+          import { expect } from '${packageName`expect`}'
+          import { toMatchImageSnapshot as self } from '../src/index.js'
 
-      expect.extend({ toMatchImageSnapshot: self })
+          expect.extend({ toMatchImageSnapshot: self })
 
-      it('works', async function () {
-        const img = await sharp({
-          create: {
-            background: { b: 0, g: 255, r: 0 },
-            channels: 3,
-            height: 48,
-            width: 48,
-          },
-        })
-          .png()
-          .toBuffer()
-        expect(img).toMatchImageSnapshot(this)
-      })
-    `
+          it('works', async function () {
+            const img = await sharp({
+              create: {
+                background: { b: 0, g: 255, r: 0 },
+                channels: 3,
+                height: 48,
+                width: 48,
+              },
+            })
+              .png()
+              .toBuffer()
+            expect(img).toMatchImageSnapshot(this)
+          })
+        `,
       )
       await fs.outputFile(
         P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
@@ -321,14 +321,14 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
       await execaCommand('mocha --timeout 5000 index.spec.js', {
         env: { SNAPSHOT_UPDATE: true },
       })
 
       const snapshot = await fs.readFile(
-        P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png')
+        P.join('__image_snapshots__', 'index-spec-js-works-1-snap.png'),
       )
       expect(snapshot).toMatchImage(
         await sharp({
@@ -340,7 +340,7 @@ export default tester(
           },
         })
           .png()
-          .toBuffer()
+          .toBuffer(),
       )
     },
   },
@@ -350,5 +350,5 @@ export default tester(
       beforeEach: () =>
         outputFile('package.json', JSON.stringify({ type: 'module' })),
     },
-  ]
+  ],
 )
