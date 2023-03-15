@@ -21,7 +21,7 @@ export const configureToMatchImageSnapshot =
     if (!context || !context.test) {
       throw new Error(
         'Missing `context` argument for .toMatchImageSnapshot().\n' +
-          'Did you forget to pass `this` into expect().toMatchImageSnapshot(this)?'
+          'Did you forget to pass `this` into expect().toMatchImageSnapshot(this)?',
       )
     }
     if (!context.imageSnapshotState) {
