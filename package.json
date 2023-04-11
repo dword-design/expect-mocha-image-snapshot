@@ -1,6 +1,6 @@
 {
   "name": "expect-mocha-image-snapshot",
-  "version": "3.0.11",
+  "version": "3.0.12",
   "description": "A wrapper around jest-image-snapshot that makes it compatible to Mocha.",
   "keywords": [
     "expect",

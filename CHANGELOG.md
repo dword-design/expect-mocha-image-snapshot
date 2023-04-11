@@ -1,3 +1,10 @@
+## [3.0.12](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v3.0.11...v3.0.12) (2023-04-11)
+
+
+### Bug Fixes
+
+* update dependency @dword-design/tester-plugin-tmp-dir to v2.1.24 ([355df5c](https://github.com/dword-design/expect-mocha-image-snapshot/commit/355df5c4afad516696996b300709f82e656ff027))
+
 ## [3.0.11](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v3.0.10...v3.0.11) (2023-04-10)
 
 
