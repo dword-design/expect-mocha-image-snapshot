@@ -1,3 +1,16 @@
+# [4.0.0](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v3.0.16...v4.0.0) (2025-12-11)
+
+
+### Bug Fixes
+
+* trigger release ([3e2b527](https://github.com/dword-design/expect-mocha-image-snapshot/commit/3e2b5277167c319ee72874efd629c8e8c9627506))
+* update dependency @dword-design/base to v16 ([#132](https://github.com/dword-design/expect-mocha-image-snapshot/issues/132)) ([1b424f8](https://github.com/dword-design/expect-mocha-image-snapshot/commit/1b424f8ecf2d917e5fb7e2d8fc37120ccd218f25))
+
+
+### BREAKING CHANGES
+
+* node.js >= 22
+
 ## [3.0.16](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v3.0.15...v3.0.16) (2024-01-09)
 
 
