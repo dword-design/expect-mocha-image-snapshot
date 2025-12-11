@@ -20,7 +20,12 @@
   "license": "MIT",
   "author": "Sebastian Landwehr <info@sebastianlandwehr.com>",
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -33,28 +38,32 @@
     "lint": "base lint",
     "prepare": "base prepare",
     "prepublishOnly": "base prepublishOnly",
-    "test": "base test"
+    "test": "base test",
+    "typecheck": "base typecheck",
+    "verify": "base verify"
   },
   "dependencies": {
-    "jest-image-snapshot": "^4.4.0",
-    "jest-snapshot": "^27.0.0"
+    "jest-image-snapshot": "^6.5.1",
+    "jest-snapshot": "^30.2.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^9.2.3",
-    "@dword-design/functions": "^4.0.0",
-    "@dword-design/tester": "^2.0.12",
-    "@dword-design/tester-plugin-tmp-dir": "^2.1.7",
-    "depcheck-package-name": "^2.0.0",
-    "execa": "^6.1.0",
-    "expect": "^29.3.1",
+    "@dword-design/base": "^16.0.0",
+    "@playwright/test": "^1.57.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest-image-snapshot": "npm:@dword-design/types-jest-image-snapshot@^0.0.1",
+    "@types/mocha": "^10.0.10",
+    "depcheck-package-name": "^4.0.1",
+    "endent": "npm:@dword-design/endent@^1.4.7",
+    "execa": "^9.6.1",
+    "expect": "^30.2.0",
     "expect-mocha-snapshot": "^2.1.5",
-    "fs-extra": "^10.0.0",
-    "jest-image-matcher": "^2.0.0",
-    "mocha": "^9.0.0",
-    "sharp": "^0.31.3"
+    "fs-extra": "^11.3.2",
+    "mocha": "^11.7.5",
+    "sharp": "^0.34.5"
   },
+  "packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501",
   "engines": {
-    "node": ">=14"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
