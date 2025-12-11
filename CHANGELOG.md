@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v4.0.0...v4.0.1) (2025-12-11)
+
+
+### Bug Fixes
+
+* add mocha as peer dependency ([b3922ef](https://github.com/dword-design/expect-mocha-image-snapshot/commit/b3922ef2353615d462c32e4eadb90cff3a7f99ed))
+
 # [4.0.0](https://github.com/dword-design/expect-mocha-image-snapshot/compare/v3.0.16...v4.0.0) (2025-12-11)
 
 
