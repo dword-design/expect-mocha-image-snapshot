@@ -1,44 +1,54 @@
-import { toMatchImageSnapshot as jestToMatchImageSnapshot } from 'jest-image-snapshot'
-import { SnapshotState } from 'jest-snapshot'
+import {
+  type MatchImageSnapshotOptions,
+  toMatchImageSnapshot as jestToMatchImageSnapshot,
+} from 'jest-image-snapshot';
+import { SnapshotState } from 'jest-snapshot';
+import type { Context, Runnable, Suite } from 'mocha';
 
-const makeTestTitle = test => {
-  let next = test
+const makeTestTitle = (test: Runnable) => {
+  let next: Runnable | Suite = test;
+  const title = [];
 
-  const title = []
   for (;;) {
     if (!next.parent) {
-      break
+      break;
     }
-    title.push(next.title)
-    next = next.parent
+
+    title.push(next.title);
+    next = next.parent;
   }
 
-  return title.reverse().join(' ')
-}
+  return title.reverse().join(' ');
+};
 
 export const configureToMatchImageSnapshot =
-  common => (received, context, options) => {
+  (common: MatchImageSnapshotOptions = {}) =>
+  (
+    received: Parameters<typeof Buffer.from>[0],
+    context: Context,
+    options: MatchImageSnapshotOptions,
+  ) => {
     if (!context || !context.test) {
       throw new Error(
         'Missing `context` argument for .toMatchImageSnapshot().\n' +
           'Did you forget to pass `this` into expect().toMatchImageSnapshot(this)?',
-      )
+      );
     }
+
     if (!context.imageSnapshotState) {
       context.imageSnapshotState = new SnapshotState(undefined, {
         updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
-      })
+      });
     }
 
     const matcher = jestToMatchImageSnapshot.bind({
       currentTestName: makeTestTitle(context.test),
       snapshotState: context.imageSnapshotState,
       testPath: context.test.file,
-    })
+    });
 
-    const result = matcher(received, { ...common, ...options })
+    const result = matcher(received, { ...common, ...options });
+    return result;
+  };
 
-    return result
-  }
-
-export const toMatchImageSnapshot = configureToMatchImageSnapshot()
+export const toMatchImageSnapshot = configureToMatchImageSnapshot();

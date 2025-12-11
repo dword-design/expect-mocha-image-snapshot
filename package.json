@@ -51,6 +51,7 @@
     "@dword-design/base": "^16.0.0",
     "@playwright/test": "^1.57.0",
     "@types/jest-image-snapshot": "^6.4.0",
+    "@types/mocha": "^10.0.10",
     "depcheck-package-name": "^4.0.1",
     "endent": "npm:@dword-design/endent@^1.4.7",
     "execa": "^9.6.1",
