@@ -1,24 +1,30 @@
-import endent from 'endent';
-import { test, expect } from '@playwright/test';
-import packageName from 'depcheck-package-name'
-import { execaCommand } from 'execa'
-import fs from 'fs-extra'
-import { toMatchImage } from 'jest-image-matcher'
-import P from 'path'
-import sharp from 'sharp'
+import P from 'node:path';
 
-expect.extend({ toMatchImage })
+import { expect, test } from '@playwright/test';
+import packageName from 'depcheck-package-name';
+import endent from 'endent';
+import { execaCommand } from 'execa';
+import fs from 'fs-extra';
+import { toMatchImage } from 'jest-image-matcher';
+import sharp from 'sharp';
+
+expect.extend({ toMatchImage });
 
 test.beforeEach(async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
-  await fs.outputFile(P.join(cwd, '.mocharc.json'), JSON.stringify({
-    "$schema": "https://json.schemastore.org/mocharc.json",
-    "require": "tsx"
-  }));
+
+  await fs.outputFile(
+    P.join(cwd, '.mocharc.json'),
+    JSON.stringify({
+      $schema: 'https://json.schemastore.org/mocharc.json',
+      require: 'tsx',
+    }),
+  );
 });
 
 test('configure', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
+
   await fs.outputFile(
     P.join(cwd, 'index.spec.ts'),
     endent`
@@ -43,11 +49,13 @@ test('configure', async ({}, testInfo) => {
       });
     `,
   );
-  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd })
+
+  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd });
 
   const snapshot = await fs.readFile(
     P.join(cwd, '__foo_image_snapshots__', 'index-spec-ts-works-1-snap.png'),
-  )
+  );
+
   expect(snapshot).toMatchImage(
     await sharp({
       create: {
@@ -59,11 +67,12 @@ test('configure', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
+  );
 });
 
 test('different existing snapshot', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
+
   await fs.outputFile(
     P.join(cwd, 'index.spec.ts'),
     endent`
@@ -87,7 +96,8 @@ test('different existing snapshot', async ({}, testInfo) => {
         expect(img).toMatchImageSnapshot(this);
       });
     `,
-  )
+  );
+
   await fs.outputFile(
     P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
     await sharp({
@@ -100,16 +110,18 @@ test('different existing snapshot', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
+  );
+
   await expect(
-    execaCommand('mocha --timeout 5000 index.spec.ts', { cwd })
+    execaCommand('mocha --timeout 5000 index.spec.ts', { cwd }),
   ).rejects.toThrow(
     'Expected image to match or be a close match to snapshot but was 100% different from snapshot (2304 differing pixels).',
-  )
+  );
 });
 
 test('equal existing snapshot', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
+
   await fs.outputFile(
     P.join(cwd, 'index.spec.ts'),
     endent`
@@ -133,7 +145,8 @@ test('equal existing snapshot', async ({}, testInfo) => {
         expect(img).toMatchImageSnapshot(this);
       });
     `,
-  )
+  );
+
   await fs.outputFile(
     P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
     await sharp({
@@ -146,12 +159,14 @@ test('equal existing snapshot', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
-  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd })
+  );
+
+  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd });
 });
 
 test('expect-mocha-snapshot', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
+
   await fs.outputFile(
     P.join(cwd, 'index.spec.ts'),
     endent`
@@ -182,11 +197,13 @@ test('expect-mocha-snapshot', async ({}, testInfo) => {
       });
     `,
   );
-  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd })
+
+  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd });
 });
 
 test('multiple snapshots per test', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
+
   await fs.outputFile(
     P.join(cwd, 'index.spec.ts'),
     endent`
@@ -221,8 +238,10 @@ test('multiple snapshots per test', async ({}, testInfo) => {
         expect(img2).toMatchImageSnapshot(this);
       });
     `,
-  )
-  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd })
+  );
+
+  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd });
+
   expect(
     await fs.readFile(
       P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
@@ -238,7 +257,8 @@ test('multiple snapshots per test', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
+  );
+
   expect(
     await fs.readFile(
       P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-2-snap.png'),
@@ -254,11 +274,12 @@ test('multiple snapshots per test', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
+  );
 });
 
 test('no existing snapshots', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
+
   await fs.outputFile(
     P.join(cwd, 'index.spec.ts'),
     endent`
@@ -282,8 +303,10 @@ test('no existing snapshots', async ({}, testInfo) => {
         expect(img).toMatchImageSnapshot(this);
       });
     `,
-  )
-  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd })
+  );
+
+  await execaCommand('mocha --timeout 5000 index.spec.ts', { cwd });
+
   expect(
     await fs.readFile(
       P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
@@ -299,11 +322,12 @@ test('no existing snapshots', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
+  );
 });
 
 test('update existing snapshot', async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
+
   await fs.outputFile(
     P.join(cwd, 'index.spec.ts'),
     endent`
@@ -327,7 +351,8 @@ test('update existing snapshot', async ({}, testInfo) => {
         expect(img).toMatchImageSnapshot(this);
       });
     `,
-  )
+  );
+
   await fs.outputFile(
     P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
     await sharp({
@@ -340,15 +365,17 @@ test('update existing snapshot', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
+  );
+
   await execaCommand('mocha --timeout 5000 index.spec.ts', {
-    env: { SNAPSHOT_UPDATE: 'true' },
     cwd,
-  })
+    env: { SNAPSHOT_UPDATE: 'true' },
+  });
 
   const snapshot = await fs.readFile(
     P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
-  )
+  );
+
   expect(snapshot).toMatchImage(
     await sharp({
       create: {
@@ -360,5 +387,38 @@ test('update existing snapshot', async ({}, testInfo) => {
     })
       .png()
       .toBuffer(),
-  )
+  );
+});
+
+test('missing this', async ({}, testInfo) => {
+  const cwd = testInfo.outputPath();
+
+  await fs.outputFile(
+    P.join(cwd, 'index.spec.ts'),
+    endent`
+      import sharp from '${packageName`sharp`}';
+      import { expect } from '${packageName`expect`}';
+      import { toMatchImageSnapshot as self } from '../../src';
+
+      expect.extend({ toMatchImageSnapshot: self });
+
+      it('works', async function () {
+        const img = await sharp({
+          create: {
+            background: { b: 0, g: 255, r: 0 },
+            channels: 3,
+            height: 48,
+            width: 48,
+          },
+        })
+          .png()
+          .toBuffer();
+        expect(img).toMatchImageSnapshot();
+      });
+    `,
+  );
+
+  await expect(
+    execaCommand('mocha --timeout 5000 index.spec.ts', { cwd }),
+  ).rejects.toThrow('Missing `context` argument for .toMatchImageSnapshot().');
 });

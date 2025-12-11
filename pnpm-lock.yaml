@@ -30,6 +30,9 @@ importers:
       depcheck-package-name:
         specifier: ^4.0.1
         version: 4.0.1
+      endent:
+        specifier: npm:@dword-design/endent@^1.4.7
+        version: '@dword-design/endent@1.4.7'
       execa:
         specifier: ^9.6.1
         version: 9.6.1

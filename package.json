@@ -52,6 +52,7 @@
     "@playwright/test": "^1.57.0",
     "@types/jest-image-snapshot": "^6.4.0",
     "depcheck-package-name": "^4.0.1",
+    "endent": "npm:@dword-design/endent@^1.4.7",
     "execa": "^9.6.1",
     "expect": "^30.2.0",
     "expect-mocha-snapshot": "^2.1.5",
