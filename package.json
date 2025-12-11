@@ -43,14 +43,14 @@
     "verify": "base verify"
   },
   "dependencies": {
-    "defu": "^6.1.4",
     "jest-image-snapshot": "^6.5.1",
     "jest-snapshot": "^30.2.0"
   },
   "devDependencies": {
     "@dword-design/base": "^16.0.0",
     "@playwright/test": "^1.57.0",
-    "@types/jest-image-snapshot": "^6.4.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest-image-snapshot": "npm:@dword-design/types-jest-image-snapshot@^0.0.1",
     "@types/mocha": "^10.0.10",
     "depcheck-package-name": "^4.0.1",
     "endent": "npm:@dword-design/endent@^1.4.7",
@@ -58,11 +58,8 @@
     "expect": "^30.2.0",
     "expect-mocha-snapshot": "^2.1.5",
     "fs-extra": "^11.3.2",
-    "jest-image-matcher": "^3.0.1",
     "mocha": "^11.7.5",
-    "sharp": "^0.34.5",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.21.0"
+    "sharp": "^0.34.5"
   },
   "packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501",
   "engines": {

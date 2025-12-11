@@ -5,10 +5,7 @@ import packageName from 'depcheck-package-name';
 import endent from 'endent';
 import { execaCommand } from 'execa';
 import fs from 'fs-extra';
-import { toMatchImage } from 'jest-image-matcher';
 import sharp from 'sharp';
-
-expect.extend({ toMatchImage });
 
 test.beforeEach(async ({}, testInfo) => {
   const cwd = testInfo.outputPath();
@@ -56,7 +53,7 @@ test('configure', async ({}, testInfo) => {
     P.join(cwd, '__foo_image_snapshots__', 'index-spec-ts-works-1-snap.png'),
   );
 
-  expect(snapshot).toMatchImage(
+  expect(snapshot).toEqual(
     await sharp({
       create: {
         background: { b: 0, g: 255, r: 0 },
@@ -246,7 +243,7 @@ test('multiple snapshots per test', async ({}, testInfo) => {
     await fs.readFile(
       P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
     ),
-  ).toMatchImage(
+  ).toEqual(
     await sharp({
       create: {
         background: { b: 0, g: 255, r: 0 },
@@ -263,7 +260,7 @@ test('multiple snapshots per test', async ({}, testInfo) => {
     await fs.readFile(
       P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-2-snap.png'),
     ),
-  ).toMatchImage(
+  ).toEqual(
     await sharp({
       create: {
         background: { b: 255, g: 0, r: 0 },
@@ -311,7 +308,7 @@ test('no existing snapshots', async ({}, testInfo) => {
     await fs.readFile(
       P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
     ),
-  ).toMatchImage(
+  ).toEqual(
     await sharp({
       create: {
         background: { b: 0, g: 255, r: 0 },
@@ -376,7 +373,7 @@ test('update existing snapshot', async ({}, testInfo) => {
     P.join(cwd, '__image_snapshots__', 'index-spec-ts-works-1-snap.png'),
   );
 
-  expect(snapshot).toMatchImage(
+  expect(snapshot).toEqual(
     await sharp({
       create: {
         background: { b: 0, g: 255, r: 0 },

@@ -23,11 +23,7 @@ const makeTestTitle = (test: Runnable) => {
 
 export const configureToMatchImageSnapshot =
   (common: MatchImageSnapshotOptions = {}) =>
-  (
-    received: Parameters<typeof Buffer.from>[0],
-    context: Context,
-    options: MatchImageSnapshotOptions,
-  ) => {
+  (received: Buffer, context: Context, options: MatchImageSnapshotOptions) => {
     if (!context || !context.test) {
       throw new Error(
         'Missing `context` argument for .toMatchImageSnapshot().\n' +
@@ -36,7 +32,9 @@ export const configureToMatchImageSnapshot =
     }
 
     if (!context.imageSnapshotState) {
-      context.imageSnapshotState = new SnapshotState(undefined, {
+      context.imageSnapshotState = new SnapshotState('', {
+        rootDir: process.cwd(),
+        snapshotFormat: {},
         updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
       });
     }
