@@ -1,5 +1,5 @@
 import { toMatchImageSnapshot as jestToMatchImageSnapshot } from 'jest-image-snapshot'
-import jestSnapshot from 'jest-snapshot'
+import { SnapshotState } from 'jest-snapshot'
 
 const makeTestTitle = test => {
   let next = test
@@ -25,7 +25,7 @@ export const configureToMatchImageSnapshot =
       )
     }
     if (!context.imageSnapshotState) {
-      context.imageSnapshotState = new jestSnapshot.SnapshotState(undefined, {
+      context.imageSnapshotState = new SnapshotState(undefined, {
         updateSnapshot: process.env.SNAPSHOT_UPDATE ? 'all' : 'new',
       })
     }
