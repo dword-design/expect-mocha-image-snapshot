@@ -408,6 +408,7 @@ packages:
 
   '@dword-design/types-jest-image-snapshot@0.0.1':
     resolution: {integrity: sha512-8TP4jxxx4t9mpcye/S0hpk7wnqEq+lcZKcldjYzquU9/uKCZ6i1JRvStEzLBSAMFee+j9gsdgxTwCzcNCBLGhw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@emnapi/core@1.7.1':
     resolution: {integrity: sha512-o1uhUASyo921r2XtHYOHy7gdkGLge8ghBEQHMWmyJFoXlpU58kIrhhN3w26lpQb6dspetweapMn2CSNwQ8I4wg==}
