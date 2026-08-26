@@ -59,7 +59,7 @@
     "expect-mocha-snapshot": "^2.1.5",
     "fs-extra": "^11.3.2",
     "mocha": "^11.7.5",
-    "sharp": "^0.34.5"
+    "sharp": "^0.35.0"
   },
   "peerDependencies": {
     "mocha": "*"
