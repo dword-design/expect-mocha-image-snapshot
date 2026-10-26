@@ -47,7 +47,7 @@
     "jest-snapshot": "^30.2.0"
   },
   "devDependencies": {
-    "@dword-design/base": "^16.0.0",
+    "@dword-design/base": "^17.0.0",
     "@playwright/test": "^1.57.0",
     "@types/fs-extra": "^11.0.4",
     "@types/jest-image-snapshot": "npm:@dword-design/types-jest-image-snapshot@^0.0.1",
